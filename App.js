@@ -26,6 +26,7 @@ const HomeScreen = ({ navigation }) => {
         title="Go to Preference"
         onPress={() => navigation.navigate('Preference')}
       />
+      
     </View>
   );
 }
