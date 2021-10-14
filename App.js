@@ -3,6 +3,7 @@ import { Button, View, StyleSheet, Image, TextInput, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useState } from 'react';
+import Record from './Record';
 
 const HomeScreen = ({ navigation }) => {
 
@@ -23,10 +24,14 @@ const HomeScreen = ({ navigation }) => {
         onPress={() => navigation.navigate('About')}
       />
       <Button
+        title="Go to Record"
+        onPress={() => navigation.navigate('Record')}
+      />
+      <Button
         title="Go to Preference"
         onPress={() => navigation.navigate('Preference')}
       />
-      
+
     </View>
   );
 }
@@ -45,6 +50,12 @@ const AboutScreen = ({ navigation }) => {
   );
 }
 
+const RecordScreen = () => {
+  return (
+    <Record cupsToDrink={12}></Record>
+  );
+}
+
 const PreferenceScreen = ({ navigation }) => {
   return (
     <View style={styles.component}>
@@ -60,6 +71,7 @@ const MyStack = () => {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="About" component={AboutScreen} />
+      <Stack.Screen name="Record" component={RecordScreen} />
       <Stack.Screen name="Preference" component={PreferenceScreen} />
     </Stack.Navigator>
   );
