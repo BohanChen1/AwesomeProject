@@ -3,11 +3,13 @@ import { Button, View, StyleSheet, Image, TextInput, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useState } from 'react';
-import Record from './Record';
+import Records from './Records';
 
 const HomeScreen = ({ navigation }) => {
 
   const [name, setName] = useState('user');
+
+  let username = name
 
   return ( 
     <View style={styles.container}>
@@ -52,7 +54,8 @@ const AboutScreen = ({ navigation }) => {
 
 const RecordScreen = () => {
   return (
-    <Record cupsToDrink={12}></Record>
+    <Records
+    ></Records>
   );
 }
 
@@ -97,7 +100,7 @@ const styles = StyleSheet.create({
   },
   button:{
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'space-around'
   }
 });
 
