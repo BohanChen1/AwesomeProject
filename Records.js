@@ -99,7 +99,7 @@ const Records = () => {
       </Text>
 
       <View style={{
-        flexDirection: 'row',
+        flexDirection: 'column',
         margin: 20,
         justifyContent: 'space-around'
       }}>
@@ -131,11 +131,12 @@ const Records = () => {
         />
       </View>
       <View style={{
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-around'
       }}>
         <Button
-          title={"Record"}
+          style={{flex:1}}
+          title={'record'}
           color="blue"
           onPress={() => {
             const newRecords =
@@ -154,6 +155,7 @@ const Records = () => {
           }}
         />
         <Button
+          style={{flex:1}}
           title={"Clear"}
           color="red"
           onPress={() => {
@@ -212,7 +214,8 @@ const styles = StyleSheet.create({
   },
   textinput: {
     fontSize: 20,
-    border: "solid blue",
+    flex:1
+    //border: "solid blue",
   },
   record: {
     flexDirection: 'row',

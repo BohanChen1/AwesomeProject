@@ -4,16 +4,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useState } from 'react';
 import Records from './Records';
+import Login from './Login';
 
 const HomeScreen = ({ navigation }) => {
 
   const [name, setName] = useState('user');
 
-  let username = name
-
   return ( 
     <View style={styles.container}>
+      <View style={{flex:1}}>
+        <Login/>
+      </View>
       <View>
+      <View style={{flex:1}}>
         <Text> Hello {name}!</Text>
         <TextInput
           style={styles.textinput}
@@ -33,6 +36,8 @@ const HomeScreen = ({ navigation }) => {
         title="Go to Preference"
         onPress={() => navigation.navigate('Preference')}
       />
+      </View>
+      
 
     </View>
   );
@@ -41,7 +46,7 @@ const HomeScreen = ({ navigation }) => {
 const AboutScreen = ({ navigation }) => {
   return (
     <View style={styles.component}>
-      Here is the about screen! This app will be designed as a checklist that will remind you to drink water frequently.
+      Here is the about screen! This app will be designed as a checklist that will remind you the events.
       <Image 
         source={{
           uri: 'https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F200508140810-01-how-much-water-drink-hydrate-wellness.jpg'
@@ -82,7 +87,7 @@ const MyStack = () => {
 
 const styles = StyleSheet.create({
   container:{
-    flexDirection: 'row',
+    flexDirection: 'column',
     margin: "25px",
     padding: '10px',
     justifyContent: 'space-around',
@@ -95,8 +100,7 @@ const styles = StyleSheet.create({
   },
   textinput:{
     //margin:20,
-    fontSize:20,
-    border: "solid blue",
+    fontSize:20
   },
   button:{
     alignItems: 'center',
