@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   View, Button,
   FlatList, StyleSheet,
-  Text, TextInput
+  Text, TextInput, Image, Keyboard, TouchableWithoutFeedback, TouchableOpacity
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -91,20 +91,36 @@ const Records = () => {
       </Text>
     </View>);
   return (
-
-    <View style={styles.container}>
-      <Text style={styles.headerText}>Hello</Text>
+    <TouchableWithoutFeedback
+     onPress={Keyboard.dismiss}
+    >
+    <View style={{
+      flex: 1,
+      flexDirection: 'column',
+      backgroundColor: '#eee',
+      justifyContent: 'center',
+      textAlign: 'left',
+      marginTop: 20,
+      padding: 20,
+    }}>
+      <Image 
+        source={{
+          uri: 'https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F200508140810-01-how-much-water-drink-hydrate-wellness.jpg'
+        }}
+        style = {{ width: 200, height: 200 }}
+      />
       <Text style={{ fontSize: 25 }}>
         Record your events for today!
       </Text>
 
-      <View style={{
+      <View 
+        onPress={Keyboard.dismiss}
+        style={{
         flexDirection: 'column',
         margin: 20,
         justifyContent: 'space-around'
       }}>
         <TextInput // for the date/time
-          style={styles.textinput}
           placeholder="Date/Time"
           onChangeText={text => {
             setDateTime(text);
@@ -113,7 +129,7 @@ const Records = () => {
         />
 
         <TextInput
-          style={styles.textinput}
+          
           placeholder="location"
           onChangeText={text => {
             setLocation(text);
@@ -122,7 +138,7 @@ const Records = () => {
         />
 
         <TextInput // for the event
-          style={styles.textinput}
+          
           placeholder="Event"
           onChangeText={text => {
             setEvent(text);
@@ -134,10 +150,9 @@ const Records = () => {
         flexDirection: 'column',
         justifyContent: 'space-around'
       }}>
-        <Button
-          style={{flex:1}}
-          title={'record'}
-          color="blue"
+        <TouchableOpacity
+          style={styles.recordbutton}
+          title='record'
           onPress={() => {
             const newRecords =
               records.concat(
@@ -153,17 +168,18 @@ const Records = () => {
             setLocation("")
             setEvent("")
           }}
-        />
-        <Button
-          style={{flex:1}}
-          title={"Clear"}
-          color="red"
+        >
+          <Text style={styles.text}>Record</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.clearbutton}
           onPress={() => {
             clearAll()
             setRecords([])
           }}
-        />
-
+        >
+          <Text style={styles.text}>Clear</Text>
+        </TouchableOpacity>
       </View>
       <View style={{
         flexDirection: 'row',
@@ -198,25 +214,12 @@ const Records = () => {
       {debug ? debugView : <Text></Text>}
 
     </View>
-
+    </TouchableWithoutFeedback>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#eee',
-    justifyContent: 'center',
-    textAlign: 'left',
-    marginTop: 20,
-    padding: 20,
-  },
-  textinput: {
-    fontSize: 20,
-    flex:1
-    //border: "solid blue",
-  },
+  
   record: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -228,7 +231,34 @@ const styles = StyleSheet.create({
     padding: 10,
     color: 'blue'
   },
-
+  recordbutton:{
+    marginRight:40,
+    marginLeft:40,
+    marginTop:10,
+    paddingTop:10,
+    paddingBottom:10,
+    backgroundColor:'blue',
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#fff'
+  },
+  clearbutton:{
+    marginRight:40,
+    marginLeft:40,
+    marginTop:10,
+    paddingTop:10,
+    paddingBottom:10,
+    backgroundColor:'red',
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#fff'
+  },
+  text:{
+    color:'#fff',
+    textAlign:'center',
+    paddingLeft : 10,
+    paddingRight : 10
+  }
 });
 
 

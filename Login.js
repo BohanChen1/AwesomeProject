@@ -25,7 +25,7 @@ const signInWithEmailAndPassword = async (email, password) => {
     <View>
       <Text>Please use the following email and password for testing</Text>
       <Text>email: test@test.com</Text>
-      <Text>password: 123456</Text>
+      <Text>password: Test123456!</Text>
       <TextInput
         placeholder="email"
         onChangeText={text => {
